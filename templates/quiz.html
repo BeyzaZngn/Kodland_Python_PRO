@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz</title>
+    <style>
+        .header-container {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            align-items: center;
+            gap: 15px; /* Buton ve metin arasındaki mesafe */
+        }
+        .best-score {
+            background-color: transparent; /* Arka plan yok */
+            font-size: 14px;
+        }
+        .score-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 14px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .score-button:hover {
+            background-color: #0056b3;
+        }
+        input[type="submit"] {
+            display: block; /* Ortalanmış genişlik ve yüksekliği kontrol etmek için */
+            margin: 20px auto; /* Üst ve alt boşluk */
+            padding: 15px 30px; /* Butonun yüksekliğini artırır */
+            font-size: 16px; /* Yazı boyutunu artırır */
+            background-color: #007bff; /* Buton rengi */
+            color: white; /* Yazı rengi */
+            border: none; /* Kenarlık kaldırılır */
+            border-radius: 5px; /* Kenarlar yuvarlatılır */
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3; /* Hover (üzerine gelince) rengi */
+        }
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            font-size: 14px;
+            color: #000; /* Sadece siyah metin */
+        }
+    </style>
+</head>
+<body>
+    <!-- Header (Yan yana metin ve buton) -->
+    <div class="header-container">
+        <div class="best-score">
+            Best Score: {{ best_score }}
+        </div>
+        <a href="/scores" class="score-button">View Scores</a>
+    </div>
+
+    <h1>Computer Vision Quiz</h1>
+    <form action="/submit" method="POST">
+        <h2>What is your name?</h2>
+        <input type="text" name="username" required placeholder="Enter your name">
+
+        {% for question in questions %}
+        <div class="question">
+            <h2>{{ question.question }}</h2>
+            <label>
+                <input type="radio" name="question_{{ question.id }}" value="{{ question.option1 }}" required>
+                {{ question.option1 }}
+            </label><br>
+            <label>
+                <input type="radio" name="question_{{ question.id }}" value="{{ question.option2 }}" required>
+                {{ question.option2 }}
+            </label><br>
+            <label>
+                <input type="radio" name="question_{{ question.id }}" value="{{ question.option3 }}" required>
+                {{ question.option3 }}
+            </label><br>
+            <label>
+                <input type="radio" name="question_{{ question.id }}" value="{{ question.option4 }}" required>
+                {{ question.option4 }}
+            </label>
+        </div>
+        {% endfor %}
+
+        <!-- Submit Butonu -->
+        <input type="submit" value="Submit Answers">
+    </form>
+
+    <footer>
+        Created by Beyza Zengin
+    </footer>
+</body>
+</html>

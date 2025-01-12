@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz Result</title>
+    <style>
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            font-size: 14px;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="best-score">
+        Best Score: {{ best_score }}
+    </div>
+    <h1>Quiz Result</h1>
+    <h2>Thank you, {{ username }}!</h2>
+    <p>Your score: {{ score }}</p>
+    <p>Highest score: {{ best_score }}</p>
+    <a href="/">Try Again</a>
+
+    <footer>
+        Created by Beyza Zengin
+    </footer>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Scores</title>
+    <style>
+        .best-score {
+            position: absolute;
+            top: 10px;
+            right: 150px;
+            background-color: transparent;
+        }
+        .back-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 14px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            font-size: 14px;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <!-- Quiz sayfasına geri yönlendiren buton -->
+    <a href="/quiz" class="back-button">Back to Quiz</a>
+
+
+    <h1>All Scores</h1>
+    <table border="1">
+        <tr>
+            <th>Username</th>
+            <th>Best Score</th>
+        </tr>
+        {% for result in results %}
+        <tr>
+            <td>{{ result.username }}</td>
+            <td>{{ result.best_score }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <footer>
+        Created by Beyza Zengin
+    </footer>
+</body>
+</html>

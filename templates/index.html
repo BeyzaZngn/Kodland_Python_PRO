@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz</title>
+    <style>
+        body {
+            position: relative;
+            min-height: 100vh;
+        }
+
+        footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Quiz</h1>
+    <form action="/submit" method="POST">
+        <h2>What is your name?</h2>
+        <input type="text" name="username" required>
+
+        {% for question in questions %}
+        <h2>{{ question.question }}</h2>
+        <input type="radio" name="question_{{ question.id }}" value="{{ question.option1 }}" required> {{ question.option1 }}<br>
+        <input type="radio" name="question_{{ question.id }}" value="{{ question.option2 }}" required> {{ question.option2 }}<br>
+        <input type="radio" name="question_{{ question.id }}" value="{{ question.option3 }}" required> {{ question.option3 }}<br>
+        <input type="radio" name="question_{{ question.id }}" value="{{ question.option4 }}" required> {{ question.option4 }}<br>
+
+        {% endfor %}
+
+        <br>
+        <input type="submit" value="Submit Answers">
+    </form>
+
+    <footer>
+        Created by Beyza Zengin
+    </footer>
+</body>
+</html>
